@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes(['verify'=>true]);
+Route::group (
+    // ['prefix'=>'profile', 'name'=>'profile.', 'where'=>['id', '[0-9]+'], 'middleware'=>'auth'],
+    ['prefix'=>'profile', 'as'=>'profile.', 'where'=>['user', '[0-9]+']],
 
+    function() {
+        Route::get('{user}/edit', 'ProfileController@edit')->name('edit');
+        Route::patch('{user}', 'ProfileController@update')->name('update');
+    }
+);
+
+Auth::routes(['verify'=>true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
