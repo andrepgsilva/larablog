@@ -16,8 +16,7 @@ Route::get('/', function () {
 });
 
 Route::group (
-    // ['prefix'=>'profile', 'name'=>'profile.', 'where'=>['id', '[0-9]+'], 'middleware'=>'auth'],
-    ['prefix'=>'profile', 'as'=>'profile.', 'where'=>['user', '[0-9]+']],
+    ['prefix'=>'profile', 'as'=>'profile.', 'where'=>['id', '[0-9]+'], 'middleware'=>'auth'],
 
     function() {
         Route::get('{user}/edit', 'ProfileController@edit')->name('edit');
