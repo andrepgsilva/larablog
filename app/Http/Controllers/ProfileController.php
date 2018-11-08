@@ -2,15 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
     public function edit(User $user)
-    { 
-        return view('profile', compact('user'));  
+    {
+        abort_unless(Gate::allows('update-user', request()), '403');
+        return view('profile', compact('user'));
     }
 
     public function update(User $user)
