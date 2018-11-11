@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Contracts\Provider;
 
@@ -21,21 +22,18 @@ class SocialAuthController extends Controller
         return redirect('/');
     }
 
+    private function validateUser($providerName, $providerUser)
+    {
+        return User::whereEmail($providerUser->getEmail())->first();
+    }
+
     private function createOrGetUser(Provider $provider)
     {
+        //Get social provider user
         $providerUser = $provider->user();
         $providerName = class_basename($provider);
-
-        $user = User::whereProvider($providerName)
-            ->whereProviderId($providerUser->getId())
-            ->first();
-        
-        if (User::where('email', $providerUser->getEmail())->first()) {
-            $user = User::where('email', $providerUser->getEmail())->first();
-            return $user;
-        }
-        
-        if (! $user) {
+        $user = $this->verifyUser($providerName, $providerUser);
+        if (empty($user)) {
             $user = User::create([
                 'username' => $providerUser->getName(),
                 'email' => $providerUser->getEmail(),
@@ -44,7 +42,6 @@ class SocialAuthController extends Controller
                 'provider' => $providerName
             ]);
         }
-
         return $user;
     }
 

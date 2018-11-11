@@ -14,9 +14,8 @@ class AddSocialProviderColumnsToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('provider_id');
-            $table->string('provider');
-            $table->string('email')->nullable()->change();
+            $table->string('provider_id')->nullable();
+            $table->string('provider')->nullable();
             $table->string('password')->nullable()->change();
         });
     }
@@ -28,9 +27,6 @@ class AddSocialProviderColumnsToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('provider_id');
-            $table->string('provider');
-        });
+
     }
 }
