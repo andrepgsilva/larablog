@@ -1,5 +1,4 @@
 <?php
-
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
@@ -17,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password',
+        'username', 'email', 'email_verified_at', 'password', 'provider', 'provider_id'
     ];
 
     /**

@@ -22,6 +22,7 @@ class ProfileController extends Controller
           'username' => 'required|max:25|min:3',
           'password' => 'required|min:6|max:20'
       ]);
+      
       $validated['password'] = Hash::make($validated['password']);
       $user->update($validated);
       return redirect()->route('home');

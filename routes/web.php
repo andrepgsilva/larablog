@@ -26,3 +26,11 @@ Route::group (
 
 Auth::routes(['verify'=>true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+
+
+/* 
+    Routes to Social Auth
+*/
+Route::get('/auth/redirect/{provider}', 'SocialAuthController@redirect');
+Route::get('/auth/callback/{provider}', 'SocialAuthController@callback');
+Route::get('/auth/logout', 'SocialAuthController@logout');
