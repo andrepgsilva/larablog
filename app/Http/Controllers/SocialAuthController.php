@@ -19,7 +19,7 @@ class SocialAuthController extends Controller
     {
         $user = $this->processUser(Socialite::driver($provider));
         auth()->login($user);
-        return redirect('/');
+        return redirect('/home');
     }
 
     //Execute Create/Get user process
