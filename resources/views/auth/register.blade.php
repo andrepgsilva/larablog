@@ -68,6 +68,14 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="or-separator text-center">
+                                <i>Or</i>
+                            </div>
+                            <div class="text-center">
+                                <a href="{{ url('auth/redirect/google') }}" class="sb sb-google">
+                                    Sign up with Google
+                                </a>
+                            </div>
                     </form>
                 </div>
             </div>
