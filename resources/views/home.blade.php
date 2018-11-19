@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">
                     <span>My Posts</span>
-                    <a href="" class="float-right btn btn-success">
+                    <a href="{{ url('/posts/create') }}" class="float-right btn btn-success">
                         Add Post<i class="fas fa-plus fa-sm text-dark"></i>
                     </a>
                 </div>
@@ -38,13 +38,13 @@
                                 <td>{{ date("Y-m-d H:i:s") }}</td>
                                 <td>{{ date("Y-m-d H:i:s") }}</td>
                                 <td class="text-center">
-                                    <a href="">
-                                        <i class="fa fa-trash text-danger"></i>
+                                    <a href="" class="text-danger">
+                                        <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="">
-                                        <i class="fa fa-edit text-primary"></i>
+                                    <a href="" class="text-primary">
+                                        <i class="fa fa-edit"></i>
                                     </a>
                                 </td>
                             </tr>
@@ -55,13 +55,13 @@
                                 <td>{{ date("Y-m-d H:i:s") }}</td>
                                 <td>{{ date("Y-m-d H:i:s") }}</td>
                                 <td class="text-center">
-                                    <a href="">
-                                        <i class="fa fa-trash text-danger"></i>
+                                <a href="" class="text-danger">
+                                        <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="">
-                                        <i class="fa fa-edit text-primary"></i>
+                                    <a href="" class="text-primary">
+                                        <i class="fa fa-edit"></i>
                                     </a>
                                 </td>
                             </tr>
