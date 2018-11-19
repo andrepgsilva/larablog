@@ -3,13 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <title>Laravel</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
                 background-color: #fff;
@@ -61,7 +60,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-        </style>
+        </style>        
     </head>
     <body>
         <div class="flex-center position-ref full-height">
@@ -99,7 +98,7 @@
                             <a href="{{ url('/auth/logout') }}">Logout</a>
                         </p>
                     @else
-                        <a href="{{ url('auth/redirect/google') }}"> Google Login</a>
+                        <h1 class="title">Welcome to Laravel</h1>
                     @endauth
                 </div>
             </div>
