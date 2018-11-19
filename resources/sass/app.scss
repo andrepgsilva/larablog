@@ -16,7 +16,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-// Login Form
+// Login/Sign up Form
 .or-separator {
   border-top: 1px solid #ccc; 
   margin: 20px 0 10px;
@@ -26,5 +26,20 @@
     top: -11px; 
     padding: 0 10px; 
     background: #fff;
+  }
+}
+
+// Home Page
+.home-main {
+  .card {
+    .card-header {
+      font-size: 1.5em;
+
+      a {
+        i {
+          padding-left: 10px;
+        }
+      }
+    }
   }
 }

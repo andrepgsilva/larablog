@@ -11124,3 +11124,11 @@ button .sb.sb-fw::before {
   background: #fff;
 }
 
+.home-main .card .card-header {
+  font-size: 1.5em;
+}
+
+.home-main .card .card-header a i {
+  padding-left: 10px;
+}
+
