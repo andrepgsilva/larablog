@@ -38,3 +38,4 @@ Route::get('/auth/logout', 'SocialAuthController@logout');
     Posts Routes
 */
 Route::get('/posts/create', 'PostsController@create');
+Route::post('/posts', 'PostsController@store');
