@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -21,8 +23,23 @@ class PostsController extends Controller
         ]);
         $validated['user_id'] = auth()->id();
         $validated['author'] = auth()->user()->username;
-        $post->create($validated);
-        //IT'S NECESSARY SAVE POST THINGS ON POST_TAG
+        $post = $post->create($validated);
+        $separatedTags = (new TagsController)->separateTags($validated['tag']);
+        $verifiedTags = (new TagsController)->verifyTagExistence($separatedTags);
+        if(in_array(null, $verifiedTags)) {
+            foreach($verifiedTags as $tagname => $id) {
+                if (! $id) {
+                    $tag = new Tag();
+                    $tag->name = $tagname;
+                    $tag->save();
+                    $verifiedTags[$tagname] = $tag->id;
+                }
+            }
+        }
+        (new PostTagController())->store(
+            $post->id, 
+            array_values($verifiedTags)
+        );
         return view('home');
     }
 }
