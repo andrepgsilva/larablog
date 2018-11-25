@@ -33,3 +33,9 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 Route::get('/auth/redirect/{provider}', 'SocialAuthController@redirect');
 Route::get('/auth/callback/{provider}', 'SocialAuthController@callback');
 Route::get('/auth/logout', 'SocialAuthController@logout');
+
+/* 
+    Posts Routes
+*/
+Route::get('/posts/create', 'PostsController@create');
+Route::post('/posts', 'PostsController@store');
