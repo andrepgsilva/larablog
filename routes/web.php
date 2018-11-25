@@ -39,7 +39,3 @@ Route::get('/auth/logout', 'SocialAuthController@logout');
 */
 Route::get('/posts/create', 'PostsController@create');
 Route::post('/posts', 'PostsController@store');
-
-/**
- *  Tags Routes
-*/

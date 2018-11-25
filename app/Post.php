@@ -18,4 +18,11 @@ class Post extends Model
     {
         return $this->belongsToMany('Tag');
     }
+
+    public function addPost($postInfo) 
+    {
+        $postInfo['user_id'] = auth()->id();
+        $postInfo['author'] = auth()->user()->username;
+        return $this->create($postInfo);
+    }
 }

@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Libraries;
 
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class PostTagController extends Controller
+class PostTag
 {
     // Verify if post already own the tag
     private function verifyPostTag($post_id, $tag_id)
