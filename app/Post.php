@@ -16,6 +16,13 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('Tag');
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function addPost($postInfo) 
+    {
+        $postInfo['user_id'] = auth()->id();
+        $postInfo['author'] = auth()->user()->username;
+        return $this->create($postInfo);
     }
 }
