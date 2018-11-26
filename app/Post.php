@@ -25,11 +25,4 @@ class Post extends Model
         $postInfo['author'] = auth()->user()->username;
         return $this->create($postInfo);
     }
-
-    public function addPost($postInfo) 
-    {
-        $postInfo['user_id'] = auth()->id();
-        $postInfo['author'] = auth()->user()->username;
-        return $this->create($postInfo);
-    }
 }
