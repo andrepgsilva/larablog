@@ -15,6 +15,6 @@ class TagRepository
 
     public function create($tagname) 
     {
-        return $modeClass::create(['name'=>$tagname]);
+        return $this->modelClass::create(['name'=>$tagname]);
     }
 }

@@ -16,7 +16,7 @@ class Post extends Model
 
     public function tags()
     {
-        return $this->belongsToMany('Tag');
+        return $this->belongsToMany(Tag::class);
     }
 
     public function addPost($postInfo) 
