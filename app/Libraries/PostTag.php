@@ -22,11 +22,18 @@ class PostTag
         try {
             foreach($tags as $tag) {
                 if (! $this->verifyPostTag($post_id, $tag)) {
-                    DB::table('post_tag')->insert([$post_id, $tag]);
+                    DB::table('post_tag')->insert(
+                        [
+                            'post_id'=> $post_id, 'tag_id'=>$tag,
+                            'created_at'=> now(),
+                            'updated_at' => now()
+                        ]
+                    );
                 }
             }
         } catch(Exception $e) {
             report($e);
+            dd($e);
             return false;
         }
         return true;
