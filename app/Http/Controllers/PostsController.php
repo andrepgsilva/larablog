@@ -19,7 +19,9 @@ class PostsController extends Controller
 
     public function store(Post $post, PostStoreRequest $request) 
     {
-        $this->createFullPost($request->validated());
-        return view('home');
+        if (! $this->createFullPost($request->validated())) {
+            return back();
+        }
+        return view('/home');
     }
 }

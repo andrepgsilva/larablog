@@ -17,23 +17,20 @@ class Tag extends TagRepository
         return $tagsInfo;
     }
 
-    private function createTag($tags) 
+    private function createTag($tags, $postId) 
     {
-        if(in_array(null, $tags)) {
-            foreach($tags as $tagname => $id) {
-                if (! $id) {
-                    $tag = $this->create($tagname);
-                    $tags[$tagname] = $tag->id;
-                }
-            }
+        foreach($tags as $tagName => $id) {
+            $tag = ! $id ? $this->create($tagName): $this->modelClass::find($id);
+            $tag->posts()->attach([$postId]);
         }
         return $tags;
     }
 
-    public function buildNewTag($tags) 
+    public function buildNewTag($tags, $postId) 
     {
         return $this->createTag(
-            $this->addTagId(separateCsv($tags))
+            $this->addTagId(separateCsv($tags)),
+            $postId
         );
     }
 }
