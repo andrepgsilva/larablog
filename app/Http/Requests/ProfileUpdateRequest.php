@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileUpdateRequest extends FormRequest
@@ -28,7 +29,7 @@ class ProfileUpdateRequest extends FormRequest
                 'required', 
                 'max:25', 
                 'min:3', 
-                Rule::unique('posts')->ignore($this->user->id)
+                Rule::unique('users')->ignore($this->user->id)
             ],
             'password' => [
                 'required', 
