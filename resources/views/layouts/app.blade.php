@@ -59,8 +59,10 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->username }} <span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a href="{{ route('home') }}" class="dropdown-item"> 
+                                        My Dashboard
+                                    </a>
                                     <a href="{{ route('profile.edit', ['user' => Auth::user()->id]) }}" class="dropdown-item"> 
                                         Profile 
                                     </a>
