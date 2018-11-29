@@ -2,11 +2,12 @@
 
 namespace App\Traits;
 
-use Exception;
 use App\Post;
+use Exception;
 use App\Libraries\Tag;
-use App\Libraries\PostTag;
 use App\Tag as TagModel;
+use App\Libraries\PostTag;
+use Illuminate\Support\Facades\DB;
 
 trait CompletePost
 {
@@ -17,11 +18,13 @@ trait CompletePost
     public function createFullPost($validated) 
     {
         try {
-            $post = (new Post)->addPost($validated);
-            $createdTags = (new Tag)->buildNewTag(
-                $validated['tag'],
-                $post->id
-            );
+            DB::transaction(function() use ($validated){
+                $post = (new Post)->addPost($validated);
+                $createdTags = (new Tag)->buildNewTag(
+                    $validated['tag'],
+                    $post->id
+                );
+            });
         } catch(Exception $e) {
             report($e);
             return false;
