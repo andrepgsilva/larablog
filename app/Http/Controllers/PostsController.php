@@ -20,7 +20,7 @@ class PostsController extends Controller
     public function store(Post $post, PostStoreRequest $request) 
     {
         if (! $this->createFullPost($request->validated())) {
-            return back();
+            return back()->withErrors('Could not save your post. Try Again Later.');
         }
         return view('/home');
     }

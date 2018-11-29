@@ -22,7 +22,7 @@ trait CompletePost
                 $post = (new Post)->addPost($validated);
                 $createdTags = (new Tag)->buildNewTag(
                     $validated['tag'],
-                    $post->id
+                    $post->i
                 );
             });
         } catch(Exception $e) {
