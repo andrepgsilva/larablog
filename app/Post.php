@@ -25,4 +25,14 @@ class Post extends Model
         $postInfo['author'] = auth()->user()->username;
         return $this->create($postInfo);
     }
+
+    // Get only tag names
+    public function getNameTags() 
+    {   
+        $allTags = []; 
+        foreach($this->tags as $tag) {
+            $allTags[] = $tag->name;
+        }
+        return $allTags;
+    }
 }
