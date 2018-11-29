@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\ProfileUpdateRequest;
 
 class ProfileController extends Controller
 {
@@ -16,13 +17,9 @@ class ProfileController extends Controller
         return view('profile', compact('user'));
     }
 
-    public function update(User $user)
+    public function update(User $user, ProfileUpdateRequest $request)
     {
-      $validated = request()->validate([
-          'username' => 'required|max:25|min:3',
-          'password' => 'required|min:6|max:20'
-      ]);
-      
+      $validated = $request->validated();
       $validated['password'] = Hash::make($validated['password']);
       $user->update($validated);
       return redirect()->route('home');
