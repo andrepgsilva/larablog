@@ -3,8 +3,9 @@
 @section('content')
     <div class="container">
         <div class="justify-content-center col-md-12">
-            <form action="{{ url('/posts') }}" method="POST">
+            <form action="/posts/{{ $post->id }}" method="POST">
                 @csrf
+                @method('PATCH')
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" class="form-control" name="title" minlength="3" maxlength="255" required>
