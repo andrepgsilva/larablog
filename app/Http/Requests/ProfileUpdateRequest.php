@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProfileUpdateRequest extends FormRequest
@@ -24,8 +25,17 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|max:25|min:3',
-            'password' => 'required|min:6|max:20'
+            'username' => [
+                'required', 
+                'max:25', 
+                'min:3', 
+                Rule::unique('users')->ignore($this->user->id)
+            ],
+            'password' => [
+                'required', 
+                'min:6',
+                'max:20'
+            ]
         ];
     }
 }
