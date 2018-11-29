@@ -27,7 +27,7 @@
                         </thead>
                         <tbody>
                             @foreach ($posts as $post)
-                                @component('layouts.components.post-row-table')
+                                @component('layouts.components.post-row-table', ['id'=>$post->id])
                                     @slot('title')
                                         {{ $post->title }}
                                     @endslot
