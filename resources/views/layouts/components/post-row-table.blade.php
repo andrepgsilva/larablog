@@ -13,10 +13,10 @@
         <form action="/posts/{{ $id }}" method="POST">
             @csrf
             @method('DELETE')
-
-            <a class="text-danger" type="submit">
+            
+            <button id="btnPostDelete" class="text-danger" type="submit">
                 <i class="fa fa-trash"></i>
-            </a>
+            </button>
         </form>
     </td>
 </tr>

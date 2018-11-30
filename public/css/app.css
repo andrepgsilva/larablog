@@ -11132,3 +11132,12 @@ button .sb.sb-fw::before {
   padding-left: 10px;
 }
 
+#btnPostDelete {
+  border: none;
+  cursor: pointer;
+}
+
+#btnPostDelete:hover .fa-trash {
+  color: #e75250;
+}
+

@@ -43,3 +43,15 @@
     }
   }
 }
+
+// Post delete button
+#btnPostDelete {
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    .fa-trash {
+      color: #e75250;
+    }
+  }
+}
