@@ -5,10 +5,14 @@
         <div class="row justify-content-center">
             <div class="col"></div>
             <div class="col">
-                <form action="/profile/{{ $user->id }}" method="POST">
+                <form action="/profile/{{ $user->id }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PATCH')
-        
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col"><img src="{{ asset('img/panda_profile.jpg') }}" alt="" width="200px" height="200px" class="rounded-circle justify-content-center"></div>
+                        <div class="col"></div>
+                    </div>
                     <div class="form-group">
                             <label for="username">Username</label>
                             <input type="text" name='username' class="form-control" value="{{ $user->username }}" minlength="3" max-length='25' required>
