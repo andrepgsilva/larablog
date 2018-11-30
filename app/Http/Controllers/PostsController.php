@@ -35,7 +35,7 @@ class PostsController extends Controller
         return redirect('/home');
     }
 
-    public function delete(Post $post)
+    public function destroy(Post $post)
     {
         $post->delete();
         return redirect('/home');
