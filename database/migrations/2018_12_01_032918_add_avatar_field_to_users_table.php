@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeUsernameToUniqueOnUsersTable extends Migration
+class AddAvatarFieldToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class ChangeUsernameToUniqueOnUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            // $table->string('username')->unique()->change();
+            $table->string('avatar')->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class ChangeUsernameToUniqueOnUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('avatar');
         });
     }
 }

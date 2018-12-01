@@ -19,9 +19,12 @@ class ProfileController extends Controller
 
     public function update(User $user, ProfileUpdateRequest $request)
     {
-      $validated = $request->validated();
-      $validated['password'] = Hash::make($validated['password']);
-      $user->update($validated);
-      return redirect()->route('home');
+        $validated = $request->validated();
+        dd($validated['avatar']->storeAs('avatars', auth()->id() . '-avatar', 'public/img/'));
+        if ($validated['password']) {
+            $validated['password'] = Hash::make($validated['password']);
+        }
+        $user->update($validated);
+        return redirect()->route('home');
     }
 }

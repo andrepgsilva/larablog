@@ -14,9 +14,9 @@ class ChangeAllPostsAtrToNonNullable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->string('title')->nullable(false)->unique()->change();
-            $table->text('article')->nullable(false)->change();
-            $table->string('author')->nullable(false)->change();
+            // $table->string('title')->nullable(false)->unique()->change();
+            // $table->text('article')->nullable(false)->change();
+            // $table->string('author')->nullable(false)->change();
         });
     }
 

@@ -31,10 +31,9 @@ class ProfileUpdateRequest extends FormRequest
                 'min:3', 
                 Rule::unique('users')->ignore($this->user->id)
             ],
-            'password' => [
-                'required', 
-                'min:6',
-                'max:20'
+            'password' => ['max:20'],
+            'avatar' => [
+                'mimes:jpeg,png,jpg'
             ]
         ];
     }

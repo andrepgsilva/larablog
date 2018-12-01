@@ -49,7 +49,8 @@ class SocialAuthController extends Controller
             'email' => $providerUser->getEmail(),
             'email_verified_at' => date("Y-m-d H:i:s"),
             'provider_id' => $providerUser->getId(),
-            'provider' => $providerName
+            'provider' => $providerName,
+            'avatar' => 'standard-avatar.png'
         ]);
     }
 
