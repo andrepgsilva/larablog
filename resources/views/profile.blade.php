@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col"></div>
                         <div class="col">
-                            <div class="profile-image"><img src="{{ asset('img/avatars/' . $user->avatar) }}" alt="" width="150px" height="150px" class="rounded-circle justify-content-center"></div>
+                            <div class="profile-image"><img id="profile-avatar" src="{{ asset('img/avatars/' . $user->avatar) }}" alt="" width="150px" height="150px" class="rounded-circle justify-content-center"></div>
                         </div>
                         <div class="col"></div>
                     </div>
