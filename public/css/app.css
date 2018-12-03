@@ -11141,3 +11141,11 @@ button .sb.sb-fw::before {
   color: #e75250;
 }
 
+.profile-image {
+  padding-bottom: 12%;
+}
+
+#avatar-input-block {
+  padding-bottom: 20%;
+}
+

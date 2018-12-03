@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Libraries\Profile;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ProfileUpdateRequest;
@@ -19,9 +18,14 @@ class ProfileController extends Controller
 
     public function update(User $user, ProfileUpdateRequest $request)
     {
-      $validated = $request->validated();
-      $validated['password'] = Hash::make($validated['password']);
-      $user->update($validated);
-      return redirect()->route('home');
+        $validated = $request->validated();
+        $validated['avatar'] = Profile::saveAvatar($validated['avatar'], $user->avatar);
+        if (! $validated['avatar']) {
+            return back()->withErrors('Could not save your post. Try Again Later.');
+        }
+        $password = $validated['password'];
+        $password = $password ? Hash::make($password) : $password; 
+        $user->update($validated);
+        return redirect()->route('home');
     }
 }
