@@ -19,9 +19,11 @@ class ProfileController extends Controller
     public function update(User $user, ProfileUpdateRequest $request)
     {
         $validated = $request->validated();
-        $validated['avatar'] = Profile::saveAvatar($validated['avatar'], $user->avatar);
-        if (! $validated['avatar']) {
-            return back()->withErrors('Could not save your post. Try Again Later.');
+        if (isset($validated['avatar'])) {
+            $validated['avatar'] = Profile::saveAvatar($validated['avatar'], $user->avatar);
+            if (! $validated['avatar']) {
+                return back()->withErrors('Could not save your post. Try Again Later.');
+            }
         }
         $password = $validated['password'];
         $password = $password ? Hash::make($password) : $password; 

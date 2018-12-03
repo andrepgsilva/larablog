@@ -11,7 +11,7 @@ class Post extends Model
         'title',
         'article',
         'author',
-        'user_id'
+        'user_id',
     ];
 
     public function tags()
