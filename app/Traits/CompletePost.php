@@ -15,18 +15,19 @@ trait CompletePost
      * Create a Post with tags
      * Get request parameter already validated
      */
-    public function createFullPost($validated) 
+    public function createFullPost($validated)
     {
         try {
             DB::transaction(function() use ($validated){
-                $post = (new Post)->addPost($validated);
+                $post = (new Post())->addPost($validated);
                 $createdTags = (new Tag)->buildNewTag(
                     $validated['tag'],
-                    $post->i
+                    $post->id
                 );
             });
         } catch(Exception $e) {
             report($e);
+            dd($e);
             return false;
         }
         return true;

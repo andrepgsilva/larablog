@@ -21,7 +21,7 @@ class PostsController extends Controller
         if (! $this->createFullPost($request->validated())) {
             return back()->withErrors('Could not save your post. Try Again Later.');
         }
-        return view('/home');
+        return redirect('/home');
     }
 
     public function edit(Post $post)
