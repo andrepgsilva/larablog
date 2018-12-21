@@ -27,7 +27,6 @@ trait CompletePost
             });
         } catch(Exception $e) {
             report($e);
-            dd($e);
             return false;
         }
         return true;
